@@ -25,6 +25,12 @@
 #include <boost/range/detail/misc_concept.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 
+#ifdef BOOST_MSVC
+#  pragma warning(push)
+#  pragma warning(disable: 4510) // default constructor could not be generated
+#  pragma warning(disable: 4610) // class can never be instantiated - user defined constructor required
+#endif
+
 /*!
  * \file
  * \brief Concept checks for the Boost Range library.
@@ -382,5 +388,9 @@ namespace boost {
     };
 
 } // namespace boost
+
+#ifdef BOOST_MSVC
+#  pragma warning(pop)
+#endif
 
 #endif // BOOST_RANGE_CONCEPTS_HPP

@@ -165,7 +165,7 @@ namespace boost
 
             reference dereference() const
             {
-                return m_first + (m_step * m_step_size);
+                return static_cast<value_type>(m_first + (m_step * m_step_size));
             }
 
             friend class ::boost::iterator_core_access;

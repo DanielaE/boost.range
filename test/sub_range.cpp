@@ -155,7 +155,7 @@ void check_constant_type(T&)
 }
 
 template<class Range, class Iterator>
-void check_is_const_iterator(Iterator it)
+void check_is_const_iterator(Iterator)
 {
     BOOST_STATIC_ASSERT((
         boost::is_same<
@@ -167,7 +167,7 @@ void check_is_const_iterator(Iterator it)
 }
 
 template<class Range, class Iterator>
-void check_is_iterator(Iterator it)
+void check_is_iterator(Iterator)
 {
     BOOST_STATIC_ASSERT((
         boost::is_same<

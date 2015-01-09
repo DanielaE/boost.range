@@ -177,7 +177,7 @@ namespace boost
 namespace boost_range_extension_size_test
 {
     inline boost::range_size<FooWithoutSize>::type
-    range_calculate_size(const FooWithoutSize& rng)
+    range_calculate_size(const FooWithoutSize&)
     {
         return 2u;
     }
@@ -213,7 +213,7 @@ void check_extension_size()
 
 using boost::unit_test::test_suite;
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )
+test_suite* init_unit_test_suite( int, char*[] )
 {
     test_suite* test = BOOST_TEST_SUITE( "Range Test Suite" );
 

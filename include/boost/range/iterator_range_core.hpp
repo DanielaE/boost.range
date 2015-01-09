@@ -20,6 +20,7 @@
 #if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500))
     #pragma warning( push )
     #pragma warning( disable : 4996 )
+    #pragma warning( disable : 4702 ) // unreachable code
 #endif
 
 #include <boost/assert.hpp>

@@ -25,7 +25,7 @@ namespace boost
             : public std::binary_function<int,int,bool>
         {
         public:
-            explicit TestTicket5486Pred(int x) {}
+            explicit TestTicket5486Pred(int) {}
             bool operator()(int,int) const { return true; }
         private:
             TestTicket5486Pred();
@@ -45,7 +45,7 @@ namespace boost
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.ticket_5486" );

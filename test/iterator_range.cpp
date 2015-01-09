@@ -266,7 +266,7 @@ inline void test_advance()
     BOOST_CHECK_EQUAL(r3.advance_end(-1).size(), 1u);
 }
 
-boost::unit_test::test_suite* init_unit_test_suite( int argc, char* argv[] )
+boost::unit_test::test_suite* init_unit_test_suite( int, char*[] )
 {
     boost::unit_test::test_suite* test = BOOST_TEST_SUITE( "Range Test Suite" );
 

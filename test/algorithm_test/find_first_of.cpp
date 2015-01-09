@@ -21,6 +21,10 @@
 #include <set>
 #include <list>
 
+#ifdef BOOST_MSVC
+#  pragma warning(disable: 4512) // assignment operator could not be generated
+#endif
+
 namespace boost_range_test_algorithm_find_first_of
 {
     template<class Container2>
@@ -187,7 +191,7 @@ namespace boost_range_test_algorithm_find_first_of
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.algorithm.find_first_of" );

@@ -8,6 +8,11 @@
 //
 // For more information, see http://www.boost.org/libs/range/
 //
+
+#if defined(_MSC_VER)
+#pragma warning(disable: 4244) // conversion, possible loss of data
+#endif
+
 #include <boost/range/irange.hpp>
 #include <boost/range/algorithm_ext.hpp>
 #include <boost/range/begin.hpp>

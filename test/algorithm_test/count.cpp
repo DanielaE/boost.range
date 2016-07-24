@@ -65,9 +65,9 @@ namespace boost
 
         void test_count()
         {
-            test_count_impl< std::vector<int> >();
-            test_count_impl< std::list<int> >();
-            test_count_impl< std::multiset<int> >();
+            test_count_impl< std::vector<unsigned int> >();
+            test_count_impl< std::list<unsigned int> >();
+            test_count_impl< std::multiset<unsigned int> >();
         }
     }
 }

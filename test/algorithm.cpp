@@ -25,14 +25,9 @@
 
 #ifdef _MSC_VER
     // counting_iterator generates a warning about truncating an integer
-    #pragma warning(push)
     #pragma warning(disable : 4244)
 #endif
 #include <boost/iterator/counting_iterator.hpp>
-#ifdef _MSC_VER
-    template ::boost::counting_iterator<int>;
-    #pragma warning(pop)
-#endif
 
 #include <boost/assign.hpp>
 #include <boost/config.hpp>    

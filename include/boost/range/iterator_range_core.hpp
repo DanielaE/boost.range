@@ -405,7 +405,7 @@ public:
 
     BOOST_DEDUCED_TYPENAME base_type::size_type size() const
     {
-        return this->m_End - this->m_Begin;
+        return static_cast<base_type::size_type>(this->m_End - this->m_Begin);
     }
 };
 

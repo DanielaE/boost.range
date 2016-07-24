@@ -15,6 +15,11 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/range/iterator_range.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4244) // conversion from '__int64' to 'int', possible loss of data
+#endif
+
 namespace boost
 {
     namespace range_detail
@@ -232,5 +237,9 @@ namespace boost
     }
 
 } // namespace boost
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // include guard

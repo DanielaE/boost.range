@@ -14,9 +14,18 @@
 #include <boost/range/end.hpp>
 #include <boost/range/concepts.hpp>
 #include <algorithm>
+#include <random>
 
 namespace boost
 {
+    namespace detail
+    {
+inline std::random_device & get_common_random_device() {
+	static std::random_device generator;
+	return generator;
+}
+	}
+
     namespace range
     {
 
@@ -30,7 +39,7 @@ template<class RandomAccessRange>
 inline RandomAccessRange& random_shuffle(RandomAccessRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::random_shuffle(boost::begin(rng), boost::end(rng));
+    std::shuffle(boost::begin(rng), boost::end(rng), std::default_random_engine(boost::detail::get_common_random_device()()));
     return rng;
 }
 
@@ -39,7 +48,7 @@ template<class RandomAccessRange>
 inline const RandomAccessRange& random_shuffle(const RandomAccessRange& rng)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::random_shuffle(boost::begin(rng), boost::end(rng));
+    std::shuffle(boost::begin(rng), boost::end(rng), std::default_random_engine(boost::detail::get_common_random_device()()));
     return rng;
 }
 
@@ -48,7 +57,7 @@ template<class RandomAccessRange, class Generator>
 inline RandomAccessRange& random_shuffle(RandomAccessRange& rng, Generator& gen)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<RandomAccessRange> ));
-    std::random_shuffle(boost::begin(rng), boost::end(rng), gen);
+    std::shuffle(boost::begin(rng), boost::end(rng), std::default_random_engine(static_cast<unsigned>(gen(UINT_MAX))));
     return rng;
 }
 
@@ -57,7 +66,7 @@ template<class RandomAccessRange, class Generator>
 inline const RandomAccessRange& random_shuffle(const RandomAccessRange& rng, Generator& gen)
 {
     BOOST_RANGE_CONCEPT_ASSERT(( RandomAccessRangeConcept<const RandomAccessRange> ));
-    std::random_shuffle(boost::begin(rng), boost::end(rng), gen);
+    std::shuffle(boost::begin(rng), boost::end(rng), std::default_random_engine(static_cast<unsigned>(gen(UINT_MAX))));
     return rng;
 }
 

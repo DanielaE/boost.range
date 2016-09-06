@@ -22,7 +22,6 @@ namespace boost
     namespace
     {
         class TestTicket5486Pred
-            : public std::binary_function<int,int,bool>
         {
         public:
             explicit TestTicket5486Pred(int) {}

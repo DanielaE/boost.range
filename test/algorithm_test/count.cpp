@@ -65,16 +65,16 @@ namespace boost
 
         void test_count()
         {
-            test_count_impl< std::vector<int> >();
-            test_count_impl< std::list<int> >();
-            test_count_impl< std::multiset<int> >();
+            test_count_impl< std::vector<unsigned int> >();
+            test_count_impl< std::list<unsigned int> >();
+            test_count_impl< std::multiset<unsigned int> >();
         }
     }
 }
 
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.algorithm.count" );

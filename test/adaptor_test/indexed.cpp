@@ -96,7 +96,7 @@ void indexed_test_impl()
 }
 
 template<typename Traversal, typename Range>
-void check_traversal(const Range& rng)
+void check_traversal(const Range&)
 {
     BOOST_STATIC_ASSERT(
         boost::is_convertible<
@@ -106,7 +106,7 @@ void check_traversal(const Range& rng)
 }
 
 template<typename Traversal, typename Range>
-void check_not_traversal(const Range& rng)
+void check_not_traversal(const Range&)
 {
     BOOST_STATIC_ASSERT(
         !boost::is_convertible<

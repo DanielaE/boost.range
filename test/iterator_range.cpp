@@ -311,7 +311,7 @@ void check_reference_type()
     test_iter_range<veci_type const>(a_vec);
 }
 
-boost::unit_test::test_suite* init_unit_test_suite( int argc, char* argv[] )
+boost::unit_test::test_suite* init_unit_test_suite( int, char*[] )
 {
     boost::unit_test::test_suite* test = BOOST_TEST_SUITE( "Range Test Suite" );
     

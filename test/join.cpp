@@ -45,7 +45,7 @@ namespace boost
         {
             typedef typename range_iterator<Range>::type iterator;
             iterator target = boost::begin(rng);
-            const int count = boost::distance(rng);
+            const int count = static_cast<int>(boost::distance(rng));
             for (int i = 0; i < count; ++i)
             {
                 *target = i;
@@ -61,7 +61,7 @@ namespace boost
         // test_join_traversal - additional tests for input and forward
         // traversal iterators. This is of course a no-op.
         template< typename Range1, typename Range2, typename TraversalTag >
-        void test_join_traversal(Range1& rng1, Range2& rng2, TraversalTag)
+        void test_join_traversal(Range1&, Range2&, TraversalTag)
         {
         }
 
@@ -383,7 +383,7 @@ namespace boost
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.adaptor.joined" );

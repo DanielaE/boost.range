@@ -222,7 +222,7 @@ void check_adaptors()
 
 using boost::unit_test::test_suite;
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )
+test_suite* init_unit_test_suite( int, char*[] )
 {
     using namespace boost;
 

@@ -123,7 +123,7 @@ namespace boost
         }
 
         template<class Container, class BinaryPredicate>
-        void test_partial_sort_impl(Container& cont, BinaryPredicate pred)
+        void test_partial_sort_impl(Container& cont, BinaryPredicate)
         {
             test_partial_sort_tp_impl(cont, partial_sort_pred_policy<BinaryPredicate>());
         }
@@ -160,7 +160,7 @@ namespace boost
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.algorithm.partial_sort" );

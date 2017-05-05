@@ -9,6 +9,12 @@
 #ifndef BOOST_RANGE_ALGORITHM_SEARCH_N_HPP_INCLUDED
 #define BOOST_RANGE_ALGORITHM_SEARCH_N_HPP_INCLUDED
 
+#include <boost/config.hpp>
+#ifdef BOOST_MSVC
+#pragma warning( push )
+#pragma warning( disable : 4127 ) // conditional expression is constant
+#endif
+
 #include <boost/concept_check.hpp>
 #include <boost/range/begin.hpp>
 #include <boost/range/end.hpp>
@@ -356,5 +362,9 @@ search_n(const ForwardRange& rng, Integer count, const Value& value,
     } // namespace range
     using range::search_n;
 } // namespace boost
+
+#ifdef BOOST_MSVC
+#pragma warning( pop )
+#endif
 
 #endif // include guard

@@ -8,6 +8,11 @@
 //
 // For more information, see http://www.boost.org/libs/range/
 //
+
+#if defined(_MSC_VER)
+#pragma warning(disable: 4244) // conversion, possible loss of data
+#endif
+
 #include <boost/range/irange.hpp>
 #include <boost/range/algorithm_ext.hpp>
 #include <boost/range/begin.hpp>
@@ -72,7 +77,7 @@ namespace boost
         for (std::ptrdiff_t current_value = first_p;
              step_p >= 0 ? current_value < last_p : current_value > last_p;
              current_value += step_p)
-            reference.push_back(current_value);
+            reference.push_back(static_cast<Integer>(current_value));
 
         std::vector<Integer> test;
         boost::push_back(test, boost::irange(first, last, step));
@@ -102,14 +107,14 @@ namespace boost
     // types.
     void test_irange(int first, int last)
     {
-        test_irange_impl<signed char>(first,last);
-        test_irange_impl<unsigned char>(first, last);
-        test_irange_impl<signed short>(first, last);
-        test_irange_impl<unsigned short>(first, last);
-        test_irange_impl<signed int>(first, last);
-        test_irange_impl<unsigned int>(first, last);
-        test_irange_impl<signed long>(first, last);
-        test_irange_impl<unsigned long>(first, last);
+        test_irange_impl<signed char>(static_cast<signed char>(first),static_cast<signed char>(last));
+        test_irange_impl<unsigned char>(static_cast<unsigned char>(first),static_cast<unsigned char>(last));
+        test_irange_impl<signed short>(static_cast<signed short>(first),static_cast<signed short>(last));
+        test_irange_impl<unsigned short>(static_cast<unsigned short>(first),static_cast<unsigned short>(last));
+        test_irange_impl<signed int>(static_cast<signed int>(first),static_cast<signed int>(last));
+        test_irange_impl<unsigned int>(static_cast<unsigned int>(first),static_cast<unsigned int>(last));
+        test_irange_impl<signed long>(static_cast<signed long>(first),static_cast<signed long>(last));
+        test_irange_impl<unsigned long>(static_cast<unsigned long>(first),static_cast<unsigned long>(last));
     }
 
     // Test driver function that for an integer range [first, last)
@@ -180,7 +185,7 @@ namespace boost
 } // namespace boost
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.irange" );

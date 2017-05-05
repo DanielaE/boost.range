@@ -57,15 +57,15 @@ namespace boost
 
         struct lambda
         {
-            lambda(const lambda_init& init) {}
-            lambda(const lambda& rhs) {}
+            lambda(const lambda_init&) {}
+            lambda(const lambda&) {}
 
             template< class T1 >
             bool operator()(T1) const { return false; }
 
         private:
             lambda() {}
-            lambda& operator=(const lambda& rhs) { return *this; }
+            lambda& operator=(const lambda&) { return *this; }
         };
 
         template< class Container, class Pred >
@@ -186,7 +186,7 @@ namespace boost
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.adaptor.filtered" );

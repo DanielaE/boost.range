@@ -73,7 +73,7 @@ namespace boost_range_test_algorithm_unique
             BOOST_DEDUCED_TYPENAME boost::range_return<
                 Container, result_type
             >::type
-            operator()(Policy& policy, Container& cont)
+            operator()(Policy&, Container& cont)
             {
                 typedef BOOST_DEDUCED_TYPENAME boost::range_return<
                                 Container,result_type>::type result_t;
@@ -252,7 +252,7 @@ namespace boost_range_test_algorithm_unique
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.algorithm.unique" );

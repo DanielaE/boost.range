@@ -18,7 +18,7 @@ struct example
   int value;
 };
 
-int main(int argc, const char* argv[])
+int main(int, const char*[])
 {
 //<-
 #if !defined(BOOST_NO_CXX11_DECLTYPE) \

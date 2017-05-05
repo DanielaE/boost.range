@@ -308,7 +308,7 @@ namespace boost
                 Container&                  test,
                 Container&                  reference,
                 iterator_range<Iterator>    test_rng,
-                Iterator                    reference_it
+                Iterator                 /* reference_it */
                 )
             {
                 BOOST_CHECK_EQUAL_COLLECTIONS(

@@ -25,14 +25,9 @@
 
 #ifdef _MSC_VER
     // counting_iterator generates a warning about truncating an integer
-    #pragma warning(push)
     #pragma warning(disable : 4244)
 #endif
 #include <boost/iterator/counting_iterator.hpp>
-#ifdef _MSC_VER
-    template ::boost::counting_iterator<int>;
-    #pragma warning(pop)
-#endif
 
 #include <boost/assign.hpp>
 #include <boost/config.hpp>    
@@ -56,13 +51,18 @@
 #include <vector>
 #include <iterator>
 #include <functional>
+
+#ifdef BOOST_MSVC
+# pragma warning(disable: 4127) // conditional expression is constant
+#endif
+
 ///////////////////////////////////////////////////////////////////////////////
 // dummy function object, used with algorithms
 //
 struct null_fun
 {
     template<typename T>
-        void operator()(T const &t) const
+        void operator()(T const &) const
     {
     }
 };
@@ -97,7 +97,7 @@ struct null_op1
 struct null_op2
 {
     template<typename T,typename U>
-    T const & operator()(T const & t, U const & u) const
+    T const & operator()(T const & t, U const &) const
     {
         return t;
     }
@@ -153,7 +153,7 @@ void test_random_algorithms(Rng & rng, std::random_access_iterator_tag)
 }
 
 template<typename Rng>
-void test_random_algorithms(Rng & rng, std::input_iterator_tag)
+void test_random_algorithms(Rng &, std::input_iterator_tag)
 {
     // no-op
 }
@@ -466,7 +466,7 @@ void simple_compile_test()
 
 using boost::unit_test::test_suite;
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )
+test_suite* init_unit_test_suite( int, char*[] )
 {
     using namespace boost;
 

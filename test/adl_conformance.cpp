@@ -83,13 +83,13 @@ namespace find_templated
     // ambiguity.
     //
     template< class T >
-    inline typename range<T>::iterator begin( range<T>& r )
+    inline typename range<T>::iterator begin( range<T>& )
     {
         return templated_namespace;
     }
 
     template< class T >
-    inline typename range<T>::iterator begin( const range<T>& r )
+    inline typename range<T>::iterator begin( const range<T>& )
     {
         return templated_namespace;
     }
@@ -109,13 +109,13 @@ namespace find_non_templated
         iterator end() const   { return unused; }
     };
 
-    inline range::iterator begin( range& r )
+    inline range::iterator begin( range& )
     {
         return non_templated_namespace;
     }
 
 
-    inline range::iterator begin( const range& r )
+    inline range::iterator begin( const range& )
     {
         return non_templated_namespace;
     }
@@ -132,12 +132,12 @@ struct range
     iterator end() const   { return unused; }
 };
 
-inline range::iterator begin( range& r )
+inline range::iterator begin( range& )
 {
     return global_namespace;
 }
 
-inline range::iterator begin( const range& r )
+inline range::iterator begin( const range& )
 {
     return global_namespace;
 }
@@ -176,7 +176,7 @@ void check_adl_conformance()
 
 using boost::unit_test::test_suite;
 
-test_suite* init_unit_test_suite( int argc, char* argv[] )
+test_suite* init_unit_test_suite( int, char*[] )
 {
     test_suite* test = BOOST_TEST_SUITE( "Range Test Suite" );
 

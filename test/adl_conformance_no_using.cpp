@@ -15,7 +15,7 @@ namespace A
    namespace detail
    {
       template< typename T >
-      int f( const T& x )
+      int f( const T& )
       {
          // Default:
          std::cout << 1 << std::endl;

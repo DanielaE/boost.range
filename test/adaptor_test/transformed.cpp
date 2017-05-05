@@ -46,14 +46,14 @@ namespace boost
         {
             typedef int result_type;
 
-            lambda(const lambda_init& init) {}
-            lambda(const lambda& rhs) {}
+            lambda(const lambda_init&) {}
+            lambda(const lambda&) {}
 
             int operator()(int x) const { return x + 1; }
 
         private:
             lambda() {}
-            lambda& operator=(const lambda& rhs) { return *this; }
+            lambda& operator=(const lambda&) { return *this; }
         };
 
         template< class Container, class TransformFn >
@@ -158,7 +158,7 @@ namespace boost
 }
 
 boost::unit_test::test_suite*
-init_unit_test_suite(int argc, char* argv[])
+init_unit_test_suite(int, char*[])
 {
     boost::unit_test::test_suite* test
         = BOOST_TEST_SUITE( "RangeTestSuite.adaptor.transformed" );

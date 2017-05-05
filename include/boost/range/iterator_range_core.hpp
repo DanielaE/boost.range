@@ -20,6 +20,7 @@
 #if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1500))
     #pragma warning( push )
     #pragma warning( disable : 4996 )
+    #pragma warning( disable : 4702 ) // unreachable code
 #endif
 
 #include <boost/assert.hpp>
@@ -404,7 +405,7 @@ public:
 
     BOOST_DEDUCED_TYPENAME base_type::size_type size() const
     {
-        return this->m_End - this->m_Begin;
+        return static_cast<typename base_type::size_type>(this->m_End - this->m_Begin);
     }
 };
 

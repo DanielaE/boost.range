@@ -15,6 +15,7 @@
 #ifdef BOOST_MSVC
 #pragma warning( push )
 #pragma warning( disable : 4355 )
+#pragma warning( disable : 4127 ) // conditional expression is constant
 #endif
 
 #include <boost/range/adaptor/argument_fwd.hpp>

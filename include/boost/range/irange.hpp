@@ -15,6 +15,11 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/range/iterator_range.hpp>
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+#pragma warning(disable: 4244) // conversion from '__int64' to 'int', possible loss of data
+#endif
+
 namespace boost
 {
     namespace range_detail
@@ -165,7 +170,7 @@ namespace boost
 
             reference dereference() const
             {
-                return m_first + (m_step * m_step_size);
+                return static_cast<value_type>(m_first + (m_step * m_step_size));
             }
 
             friend class ::boost::iterator_core_access;
@@ -239,5 +244,9 @@ namespace boost
     }
 
 } // namespace boost
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
 #endif // include guard

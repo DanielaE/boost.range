@@ -99,6 +99,7 @@ namespace boost
     public:
         void* allocate(std::size_t bytes)
         {
+            (void)bytes;
             BOOST_ASSERT( bytes <= m_buffer.size() );
             return m_buffer.data();
         }
